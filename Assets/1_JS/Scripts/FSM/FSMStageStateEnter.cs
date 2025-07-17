@@ -1,16 +1,44 @@
 using UnityEngine;
 
-public class FSM1 : MonoBehaviour
+public class FSMStageStateEnter : FSMStateBase
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public FSMStageStateEnter() 
+        : base(EFSMStageStateType.StageStart) 
     {
+
+    }
+
+    public override void OnEnter()
+    {
+        base.OnEnter();
+    }
+    public override void OnExit()
+    {
+        base.OnExit();
+        Debug.Log("Stage State Progress Exit");
+        mDurationTime = 0;
+    }
+
+    public override void OnProgress(float InDeltaTime)
+    {
+        base.OnProgress(InDeltaTime);
+        mDurationTime += InDeltaTime;
+        if(mDurationTime > 1.0f)
+        {
+            if (mCountDown <= 0)
+            {
+                FSMStageController.aInstance.ChangeState(new FSMStageStateProgress());
+            }
+            else
+            {
+                mCountDown--;
+                Debug.Log("Count Down - " + mCountDown);
+            }
+            mDurationTime = 0.0f;
+        }
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private float mCountDown = 3;
+    private float mDurationTime = 0;
 }

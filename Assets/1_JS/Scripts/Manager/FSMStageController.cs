@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using UnityEditor;
 using UnityEngine;
 
@@ -24,12 +25,23 @@ public class FSMStageController
     }
     public void EnterStage()
     {
-        mStageFSM = new FSM(new FSMStateBase(EFSMStageStateType.StageStart));
+        mStageFSM = new FSM(new FSMStageStateEnter());
+    }
+
+    public void ChangeState(FSMStateBase InFSMState)
+    {
+        if (mStageFSM != null)
+        {
+            mStageFSM.ChangeState(InFSMState);
+        }
     }
 
     public void OnUpdate(float InDeltaTime)
     {
-
+        if(mStageFSM != null)
+        {
+            mStageFSM.OnUpdateState(InDeltaTime);
+        }
     }
     private FSM mStageFSM = null;
     private static FSMStageController sInstance = null;
