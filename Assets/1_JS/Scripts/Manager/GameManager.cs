@@ -1,0 +1,45 @@
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    public int mStageId = 1;
+    public GameObject mMyPc;
+    public Transform mNpcSpawnParent;// Parent for NPCs
+    public Transform mSkillObjectParant;
+    public Transform mItemObjectParent;
+
+    void Start()
+    {
+        GameDataManager.aInstance.Init();
+        GameDataManager.aInstance.SetStageData(mMyPc, mNpcSpawnParent, mSkillObjectParant, mItemObjectParent);
+        GameDataManager.aInstance.SetCurrentStage(mStageId); 
+
+        GamePoolManager.aInstance.Init();
+        GameControl.aInstance.Init();
+        FSMStageController.aInstance.Init();
+        SpawnManager.aInstance.Init();
+    }
+
+    void OnDestroy()
+    {
+        GameDataManager.aInstance.Clear();
+        
+        GamePoolManager.aInstance.Clear();
+        GameControl.aInstance.Clear();
+        FSMStageController.aInstance.Clear();
+        SpawnManager.aInstance.Clear();
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        FSMStageController.aInstance.OnUpdate(Time.deltaTime);        
+    }
+    private void FixedUpdate()
+    {
+
+    }
+    private void LateUpdate()
+    {
+
+    }
+}
