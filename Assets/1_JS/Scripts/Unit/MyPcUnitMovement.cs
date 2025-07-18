@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MyPcUnitMovement : UnitMovementBase
@@ -18,6 +19,11 @@ public class MyPcUnitMovement : UnitMovementBase
 
     }
 
+    public void DoManualAttack(SkillType InSkillType, Vector3 InAttackPos)  //BH
+    {
+        Vector3 IAttackDirect = (InAttackPos - transform.position).normalized; //공격방향
+        mRotationTransform.rotation = Quaternion.RotateTowards(mRotationTransform.rotation, Quaternion.LookRotation(IAttackDirect), 360);
+    }
     private void HandleMoiving(Vector3 pDirect)
     {
         // 이동

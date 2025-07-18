@@ -43,6 +43,16 @@ public class FSMStageController
             mStageFSM.OnUpdateState(InDeltaTime);
         }
     }
+    public bool IsPlayGame() //BH
+    {
+        if (mStageFSM == null)
+        {
+            return false;
+        }
+        return mStageFSM.mCurrentState.mCurrentStateType == EFSMStageStateType.StageProgress 
+            || mStageFSM.mCurrentState.mCurrentStateType == EFSMStageStateType.StageBoss;
+
+    }
     private FSM mStageFSM = null;
     private static FSMStageController sInstance = null;
 }

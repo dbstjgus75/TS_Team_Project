@@ -5,10 +5,12 @@ public class GameControl
     public delegate void OnMoving(Vector3 pDirect);
     public delegate void OnMoveStart();
     public delegate void OnMoveEnd();
-
+    public delegate void OnMouseInput(int InIndex, Vector3 InMousePos); //BH
     public OnMoving aOnMoving { get; set; }
     public OnMoveStart aOnMoveStart { get; set; }
     public OnMoveEnd aOnMoveEnd { get; set; }
+
+    public OnMouseInput aOnMouseInput { get; set; } // BH
 
     public static GameControl aInstance
     {
@@ -37,12 +39,29 @@ public class GameControl
     public void OnUpdate()
     {
         _UpdateKeyboard();
+        _UpdateMouseInput(); //BH
     }
     public void Clear()
     {
 
     }
-
+    private void _UpdateMouseInput() //BH
+    {
+        if (Input.GetMouseButton(0))  //버튼다운으로 바꾸면 1클릭당 1미사일발사
+        {
+            if (aOnMouseInput != null)
+            {
+                aOnMouseInput(0, Input.mousePosition);
+            }
+        }
+        if (Input.GetMouseButton(1))
+        {
+            if (aOnMouseInput != null)
+            {
+                aOnMouseInput(1, Input.mousePosition);
+            }
+        }
+    }
     private void _UpdateKeyboard()
     {
         Vector3 MoveVector = Vector3.zero;
