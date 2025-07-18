@@ -29,7 +29,7 @@ public class GameDataManager
     }
     public void Init()
     {
-
+        ClearGameTime(); // ysh
     }
     public void Clear()
     {
@@ -38,6 +38,8 @@ public class GameDataManager
         mSpawnRoot = null;
         mItemRoot = null;
         mSkillRoot = null;
+
+        mCurrentGameTime = 0; // ysh
     }
     public void SetStageData(GameObject InMyPc, Transform InSpawnRoot, Transform InSkillRoot, Transform InItemRoot)
     {
@@ -51,10 +53,27 @@ public class GameDataManager
         mStage = InStage;
     }
 
+    // 게임 시간과 관련된 구현사항 적용 ysh
+    public void UpdateGameTime(float InDeltaTime) // ysh
+    {
+        mCurrentGameTime += InDeltaTime;
+    }
+    public float GetGameTime() // ysh
+    {
+        return mCurrentGameTime;
+    }
+
+    public void ClearGameTime() // ysh
+    {
+        mCurrentGameTime = 0.0f;
+    }
+
     private static GameDataManager sInstance = null;
 
     private GameObject mMyPc;
     private Transform mSpawnRoot;
     private Transform mSkillRoot;
     private Transform mItemRoot;
+
+    private float mCurrentGameTime = 0.0f;
 }

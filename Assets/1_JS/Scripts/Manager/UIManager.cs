@@ -21,6 +21,13 @@ public class UIManager
     // HUD 텍스트 내용 변경 및 지정
     public OnShowHUDText aOnShowHUDText { get; set; }
 
+    // 경험치 슬라이더 설정
+    public delegate void OnSetExp(int InExp, int InMaxExp); // ysh
+    public OnSetExp aOnSetExp { get; set; } // ysh
+
+    public delegate void OnShowLevelUpStateUI(bool InIsShow); // 레벨업 UI 표시 여부 ysh
+    public OnShowLevelUpStateUI aOnShowLevelUpStateUI { get; set; } // ysh
+
     // HUD 텍스트 표시
     public void ShowHUDText(string Intext)
     {
@@ -36,6 +43,23 @@ public class UIManager
         if (aOnShowHUDText != null)
         {
             aOnShowHUDText(false, string.Empty);
+        }
+    }
+
+    public void ShowLevelUpStateUI(bool InIsShow) // ysh
+    {
+        if (aOnShowLevelUpStateUI != null)
+        {
+            aOnShowLevelUpStateUI(InIsShow);
+        }
+    }
+
+    // 경험치 슬라이더 설정
+    public void SetExp(int InCurrentExp, int InMaxExp) // ysh
+    {
+        if (aOnSetExp != null)
+        {
+            aOnSetExp(InCurrentExp, InMaxExp);
         }
     }
 

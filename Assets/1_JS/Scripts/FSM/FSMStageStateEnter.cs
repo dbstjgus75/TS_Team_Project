@@ -11,11 +11,15 @@ public class FSMStageStateEnter : FSMStateBase
     public override void OnEnter()
     {
         base.OnEnter();
+        mCountDown = 3; // ysh
+        mDurationTime = 0; // ysh
+
+        UIManager.aInstance.ShowHUDText("Ready"); // ysh
+        UIManager.aInstance.ShowLevelUpStateUI(false); // ysh
     }
     public override void OnExit()
     {
         base.OnExit();
-        Debug.Log("Stage State Progress Exit");
         mDurationTime = 0;
     }
 
@@ -31,6 +35,7 @@ public class FSMStageStateEnter : FSMStateBase
             }
             else
             {
+                UIManager.aInstance.ShowHUDText(mCountDown.ToString());
                 mCountDown--;
                 Debug.Log("Count Down - " + mCountDown);
             }
