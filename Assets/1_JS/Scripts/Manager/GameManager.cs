@@ -15,9 +15,12 @@ public class GameManager : MonoBehaviour
         GameDataManager.aInstance.SetCurrentStage(mStageId); 
 
         GamePoolManager.aInstance.Init();
+
         GameControl.aInstance.Init();
-        FSMStageController.aInstance.Init();
+        GameControl.aInstance.SetControlObject(mMyPc);
+
         SpawnManager.aInstance.Init();
+        FSMStageController.aInstance.Init();
 
         FSMStageController.aInstance.EnterStage();
     }
@@ -28,13 +31,14 @@ public class GameManager : MonoBehaviour
         
         GamePoolManager.aInstance.Clear();
         GameControl.aInstance.Clear();
-        FSMStageController.aInstance.Clear();
         SpawnManager.aInstance.Clear();
+        FSMStageController.aInstance.Clear();
     }
     // Update is called once per frame
     void Update()
     {
-        FSMStageController.aInstance.OnUpdate(Time.deltaTime);        
+        FSMStageController.aInstance.OnUpdate(Time.deltaTime);
+        GameControl.aInstance.OnUpdate();
     }
     private void FixedUpdate()
     {

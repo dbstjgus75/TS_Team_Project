@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class UnitMovementBase : MonoBehaviour
 {
-    public float mSpeed = 5.0f; // ÀÌµ¿ ¼Óµµ
-    public Transform mRotationTransform; // À¯´Ö È¸Àü½ÃÅ³ ¿ÀºêÁ§Æ®
-    public float mRotationSpeed = 400.0f; // È¸Àü ¼Óµµ
+    public float mSpeed = 5.0f; // ï¿½Ìµï¿½ ï¿½Óµï¿½
+    public Transform mRotationTransform; // ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+    public float mRotationSpeed = 400.0f; // È¸ï¿½ï¿½ ï¿½Óµï¿½
     public Animator mAnimator; 
     void Start()
     {

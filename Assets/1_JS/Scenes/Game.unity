@@ -319,6 +319,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &209990102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1556040939566342, guid: c20397bf1592dc040b827e8716b0bd41, type: 3}
+  m_PrefabInstance: {fileID: 903681245}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &403650454
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +455,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4663201936121250689, guid: c20397bf1592dc040b827e8716b0bd41, type: 3}
+      propertyPath: mAnimator
+      value: 
+      objectReference: {fileID: 903681249}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -461,6 +470,11 @@ PrefabInstance:
 --- !u!4 &903681246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4086279202973348, guid: c20397bf1592dc040b827e8716b0bd41, type: 3}
+  m_PrefabInstance: {fileID: 903681245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &903681249 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95922273507661854, guid: c20397bf1592dc040b827e8716b0bd41, type: 3}
   m_PrefabInstance: {fileID: 903681245}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &911093688
@@ -508,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mStageId: 1
-  mMyPc: {fileID: 0}
+  mMyPc: {fileID: 209990102}
   mNpcSpawnParent: {fileID: 0}
   mSkillObjectParant: {fileID: 0}
   mItemObjectParent: {fileID: 0}
