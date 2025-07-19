@@ -9,3 +9,13 @@ public enum EFSMStageStateType
     StageBoss,
     StageEnd,
 }
+
+public class StageUnitData // ysh
+{
+    public string UnitId;
+    public string UnitPath;
+    public float UnitSpeed;
+    public int Hp;
+    public int Power;
+    public int Aromor;
+}
