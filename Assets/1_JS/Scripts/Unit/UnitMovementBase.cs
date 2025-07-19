@@ -11,8 +11,18 @@ public class UnitMovementBase : MonoBehaviour
         
     }
 
-    void Update()
+    protected virtual void Update() // ysh_7-3
     {
-        
+        Vector3 INowPosition = transform.position + new Vector3(0, 100, 0);
+        Vector3 IDirection = new Vector3(0, -1, 0);
+        RaycastHit IHit;
+        int layermask = 1 << LayerMask.NameToLayer("Terrain");
+        if(Physics.Raycast(INowPosition, IDirection, out IHit, 200, layermask))
+        {
+            float IHeight = IHit.point.y;
+            Vector3 INewPos = transform.position;
+            INewPos.y = IHeight;
+            transform.position = INewPos;
+        }
     }
 }

@@ -666,7 +666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4086279202973348, guid: c20397bf1592dc040b827e8716b0bd41, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 23.63
       objectReference: {fileID: 0}
     - target: {fileID: 4086279202973348, guid: c20397bf1592dc040b827e8716b0bd41, type: 3}
       propertyPath: m_LocalPosition.y
@@ -674,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4086279202973348, guid: c20397bf1592dc040b827e8716b0bd41, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10.16
       objectReference: {fileID: 0}
     - target: {fileID: 4086279202973348, guid: c20397bf1592dc040b827e8716b0bd41, type: 3}
       propertyPath: m_LocalRotation.w
@@ -764,7 +764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mStageId: 1
   mMyPc: {fileID: 209990102}
-  mNpcSpawnParent: {fileID: 0}
+  mNpcSpawnParent: {fileID: 83035985}
   mSkillObjectParant: {fileID: 560887455}
   mItemObjectParent: {fileID: 0}
 --- !u!1 &1034024899
