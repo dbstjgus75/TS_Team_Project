@@ -3,7 +3,7 @@ using UnityEngine;
 public class UnitData
 {
     public int TotalHP = 0;
-    public int HP = 0;
+    public int Hp = 0;
     public int Power = 0;
     public int Armor = 0;
 }
@@ -23,7 +23,7 @@ public class UnitBase : MonoBehaviour
     {
         mUnitId = InUnitId; // 유닛 ID 설정
         mUnitData = new UnitData(); // 유닛 데이터 초기화
-        mUnitData.TotalHP = mUnitData.HP = InHP; // 총 HP와 현재 HP 설정
+        mUnitData.TotalHP = mUnitData.Hp = InHP; // 총 HP와 현재 HP 설정
         mUnitData.Power = InPower; // 공격력 설정
         mUnitData.Armor = InArmor; // 방어력 설정
         mlsAlive = true; // 살아있음
@@ -37,8 +37,8 @@ public class UnitBase : MonoBehaviour
             return;
         }
         int HitDamage = Mathf.Max(0, InDamage - mUnitData.Armor); // 방어력만큼 감소
-        mUnitData.HP -= HitDamage; // HP 감소
-        if (mUnitData.HP <= 0)
+        mUnitData.Hp -= HitDamage; // HP 감소
+        if (mUnitData.Hp <= 0)
         {
             OnDie();
         }

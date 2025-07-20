@@ -6,6 +6,7 @@ public enum SkillType
     Missile,
     ManualMissile,
     MoveSpeedUp,
+    MagicRain,
 }
 
 public enum SkillActiveType
@@ -17,7 +18,7 @@ public enum SkillActiveType
 
 public class SkillLevelData
 {
-    public SkillType type;
+    public SkillType Type;
     public string Path;
     public int Level;
     public int Power;
@@ -31,6 +32,7 @@ public class SkillData
 {
     public SkillType Type;
     public SkillActiveType ActiveType;
+    public string SkillIconPath;
     public Dictionary<int, SkillLevelData> LevelDatas;
 }
 public class ActiveSkillData

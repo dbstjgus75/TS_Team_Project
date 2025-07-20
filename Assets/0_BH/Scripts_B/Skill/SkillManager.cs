@@ -18,7 +18,6 @@ public class SkillManager : MonoBehaviour
     }
     private void _OnMouseInput(int InIndex, Vector3 InMousePos)
     {
-
         RaycastHit IHit;
         Ray IRay = Camera.main.ScreenPointToRay(InMousePos);
         int layermask = 1 << LayerMask.NameToLayer("Terrain");
@@ -29,7 +28,7 @@ public class SkillManager : MonoBehaviour
             NewSkillData.FirePosition = IHit.point;
             NewSkillData.Cooltime = 0.5f;
             NewSkillData.Speed = 10.0f;
-            NewSkillData.ActiveLevel = 2;
+            NewSkillData.ActiveLevel = 1;
             NewSkillData.Power = 100;
             FireSkill(NewSkillData);
         }
@@ -51,7 +50,7 @@ public class SkillManager : MonoBehaviour
         Vector3 StartPosition = new Vector3(transform.position.x, 1, transform.position.z);
 
         FireSkillObject(InSkillData, StartPosition, ShotDirection);
-        CurrentCooltime = 0.0f; // 초기화 왜 안됌?
+        CurrentCooltime = 0.0f; 
     }
 
     public void FireSkillObject(ActiveSkillData InSkillData, Vector3 InStartPos, Vector3 InSkillDir)
@@ -59,11 +58,13 @@ public class SkillManager : MonoBehaviour
         SkillBase SkillObject = GamePoolManager.aInstance.DequeueSkillPool(InSkillData.Type);
         if(SkillObject == null)
         {
+            //SkillBase NewSkillObjectPrefab = GameDataManager.aInstance.GetSkillObjectPrefab(InSkillData.Type, InSkillData.ActiveLevel);
+            //SkillObject = GameObject.Instantiate(NewSkillObjectPrefab, GameDataManager.aInstance.GetSkillRootTransform());
             SkillBase NewSkillObjectPrefab = Resources.Load<SkillBase>("Prefabs/Missile");
             SkillObject = GameObject.Instantiate(NewSkillObjectPrefab, GameDataManager.aInstance.GetSkillRootTransform());
             if (SkillObject == null)
             {
-                return;
+                return; // 스킬 오브젝트가 없으면 리턴
             }
         }
         SkillObject.gameObject.SetActive(true); // 이걸 켜줘야 코르틴이 돌 수 있다

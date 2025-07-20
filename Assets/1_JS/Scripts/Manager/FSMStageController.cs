@@ -50,7 +50,7 @@ public class FSMStageController
             return false;
         }
         return mStageFSM.mCurrentState.mCurrentStateType == EFSMStageStateType.StageProgress 
-            || mStageFSM.mCurrentState.mCurrentStateType == EFSMStageStateType.StageBoss;
+                || mStageFSM.mCurrentState.mCurrentStateType == EFSMStageStateType.StageBoss;
 
     }
     private FSM mStageFSM = null;

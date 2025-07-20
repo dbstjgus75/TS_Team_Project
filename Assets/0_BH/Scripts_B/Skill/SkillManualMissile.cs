@@ -12,11 +12,8 @@ public class SkillManualMissile : SkillBase
     public override void FireSkill(ActiveSkillData InSkillData, Vector3 InStartPos, Vector3 InSkillDir)
     {
         base.FireSkill(InSkillData, InStartPos, InSkillDir);
-
         mSkillType = SkillType.ManualMissile;
-
         StartCoroutine(_OnMissileLiftTime());
-
     }
 
     public IEnumerator _OnMissileLiftTime()

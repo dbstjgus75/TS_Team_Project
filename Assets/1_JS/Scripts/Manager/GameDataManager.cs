@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -43,6 +44,12 @@ public class GameDataManager
         mItemRoot = null;
         mSkillRoot = null;
 
+        SkillDatas.Clear(); // JS_6-2 
+        SkillDatas =null; // JS
+
+        SkillResources.Clear(); // JS   
+        SkillResources = null; // JS
+
         StageDatas.Clear(); // ysh
         StageDatas = null; // ysh
 
@@ -53,9 +60,102 @@ public class GameDataManager
 
     public void LoadAll() // ysh
     {
+        LoadSkillData(); // JS        
         Debug.Log("LoadAll 호출");
         LoadStageData();
         Debug.Log("LoadStageData 호출");
+    }
+
+    public void LoadSkillData() // JS
+    {
+        SkillDatas = new Dictionary<SkillType, SkillData>();
+        SkillResources = new Dictionary<string, SkillBase>();
+        SkillDatas.Clear();
+        SkillResources.Clear();
+
+        TextAsset SkillJsonTextAsset = Resources.Load<TextAsset>("Data/SkillDatas");
+        string IskillJson = SkillJsonTextAsset.text;
+        JObject IDataObject = JObject.Parse(IskillJson);
+        JToken IToken = IDataObject["Skills"];
+        JArray IArray = IToken.Value<JArray>();
+
+        foreach (JObject EachObject in IArray)
+        {
+            SkillData NewSkillData = new SkillData();
+            NewSkillData.Type = Enum.Parse<SkillType>(EachObject.Value<string>("Type"));
+            NewSkillData.ActiveType = Enum.Parse<SkillActiveType>(EachObject.Value<String>("ActiveType"));
+            NewSkillData.LevelDatas = new Dictionary<int, SkillLevelData>();
+            JArray ILevelArray = EachObject.Value<JArray>("LevelDatas");
+            foreach (JObject EachLevel in ILevelArray)
+            {
+                SkillLevelData NewSkillLevelData = new SkillLevelData();
+                NewSkillLevelData.Type = NewSkillData.Type;
+                NewSkillLevelData.Level = EachLevel.Value<int>("Level");
+                NewSkillLevelData.Path = EachLevel.Value<string>("Path");
+                NewSkillLevelData.Power = EachLevel.Value<int>("Power");
+                NewSkillLevelData.Size = EachLevel.Value<int>("Size");
+                NewSkillLevelData.Speed = EachLevel.Value<float>("Speed");
+                NewSkillLevelData.ActiveTime = EachLevel.Value<float>("ActiveTime");
+                NewSkillLevelData.CoolTime = EachLevel.Value<float>("CoolTime");
+
+                NewSkillData.LevelDatas.Add(NewSkillLevelData.Level, NewSkillLevelData);
+
+                SkillBase SkillObject = Resources.Load<SkillBase>(NewSkillLevelData.Path);
+                string SkillId = GetSkillId(NewSkillLevelData);
+                SkillResources.Add(SkillId, SkillObject);
+            }
+            SkillDatas.Add(NewSkillData.Type, NewSkillData);
+        }
+    }
+
+    public string GetSkillId(SkillLevelData InSkillLevelData)
+    {
+        return GetSkillId(InSkillLevelData.Type, InSkillLevelData.Level);
+    }
+
+    public string GetSkillId(SkillType InSkillType, int InLevel)
+    {
+        return string.Format("{0}_{1}", InSkillType.ToString(), InLevel);
+    }
+
+
+    public SkillData FindSkillData(SkillType InSkillType)
+    {
+        if (SkillDatas.ContainsKey(InSkillType) == false)
+        {
+            return null;
+        }
+        return SkillDatas[InSkillType];
+    }
+    public SkillLevelData FindSkillLevleData(SkillType InSkillType, int InSkillLevel)
+    {
+        if (SkillDatas.ContainsKey(InSkillType) == false)
+        {
+            return null;
+        }        
+        if (SkillDatas[InSkillType].LevelDatas.ContainsKey(InSkillLevel) == false)
+        {
+            return null;
+        }
+        return SkillDatas[InSkillType].LevelDatas[InSkillLevel];
+    }
+
+    public SkillBase GetSkillObjectPrefab(SkillLevelData InSkillLevelData)
+    {
+        return GetSkillObjectPrefab(GetSkillId(InSkillLevelData));
+    }
+
+    public SkillBase GetSkillObjectPrefab(SkillType InType, int InSkillLevel)
+    {
+        return GetSkillObjectPrefab(GetSkillId(InType, InSkillLevel));
+    }
+    public SkillBase GetSkillObjectPrefab(string InSkillId)
+    {
+        if (SkillResources.ContainsKey(InSkillId) == false)
+        {
+            return null;
+        }
+        return SkillResources[InSkillId];
     }
 
     protected void LoadStageData() //ysh
@@ -135,6 +235,10 @@ public class GameDataManager
     private Transform mItemRoot;
 
     private Dictionary<int, StageData> StageDatas = null; // ysh
+    
+    private Dictionary<SkillType, SkillData> SkillDatas = null; // JS
+    private Dictionary<string, SkillBase> SkillResources = null; // JS
+
 
     private float mCurrentGameTime = 0.0f;
 }

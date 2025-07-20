@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
         GameDataManager.aInstance.Init();
         GameDataManager.aInstance.LoadAll(); // ysh update 2:01
         GameDataManager.aInstance.SetStageData(mMyPc, mNpcSpawnParent, mSkillObjectParant, mItemObjectParent);
-        GameDataManager.aInstance.SetCurrentStage(mStageId); 
+        GameDataManager.aInstance.SetCurrentStage(mStageId);
 
         GamePoolManager.aInstance.Init();
 
@@ -30,8 +30,7 @@ public class GameManager : MonoBehaviour
 
     void OnDestroy()
     {
-        GameDataManager.aInstance.Clear();
-        
+        GameDataManager.aInstance.Clear();        
         GamePoolManager.aInstance.Clear();
         GameControl.aInstance.Clear();
         SpawnManager.aInstance.Clear();

@@ -55,18 +55,28 @@ public class NpcUnit : UnitBase
 
     public override void OnHit(int InDamage)
     {
+        Debug.Log("OnHit 진입"); // 1. 함수 호출 확인
+
         if (FSMStageController.aInstance.IsPlayGame() == false)
         {
+            Debug.Log("게임이 플레이 상태가 아님");
+
             return; // 게임이 플레이 중이 아닐 때는 데미지를 받지 않음
         }
         if (mlsNoneDamage == true)
         {
+            Debug.Log("mlsNoneDamage == true 상태로 데미지 무효화");
+
             return; // 데미지를 받지 않도록 설정된 상태
         }
         mlsNoneDamage = true;
+
+        Debug.Log("base.OnHit 진입 전");
         base.OnHit(InDamage);
 
-        Debug.Log("Npc : " + gameObject.name + "Hp : " + mUnitData.HP);
+        Debug.Log(mUnitData != null ? "mUnitData 존재, HP=" + mUnitData.Hp : "mUnitData null");
+
+        Debug.Log("Npc : " + gameObject.name + "Hp : " + mUnitData.Hp);
         if(mlsAlive)
         {
             StartCoroutine(_OnHitting()); // 데미지를 받은 후 일정 시간 동안 다시 데미지를 받지 않도록 설정
