@@ -42,7 +42,7 @@ public class FSMStageStateProgress : FSMStateBase
         bool bSpawn = false; // ysh_7-3
         if (mDurationTime > mNextSpawnTime) // ysh_7-3
         {
-            mNowSpawn += 10;
+            mNowSpawn = 1;
             mNowSpawn = Mathf.Min(mNowSpawn, mMaxSpawn);
             mNextSpawnTime += 3.0f;
             bSpawn = true;

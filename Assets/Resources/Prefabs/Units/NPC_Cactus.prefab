@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6961269472799210413}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_rightHandTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5448356654517971819}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5436476740146464623}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2564048624012358339}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_rightUpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4321902591798676022}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5879685578282490735}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_spine01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7758383863938560452}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_rightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6666825689414306869}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_leftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3613870848530396509}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_leftLowerArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7160897020656325925}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_leftEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7264243187320198170}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_headDeco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3088523348869991008}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_leftUpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2947016869698456476}
   - component: {fileID: 2900174197949582312}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cactus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,9 @@ GameObject:
   - component: {fileID: 7769598065701365474}
   - component: {fileID: 3049416808262959375}
   - component: {fileID: 8506798538016095466}
-  m_Layer: 0
+  - component: {fileID: -4569707650510538569}
+  - component: {fileID: 2755631137439024732}
+  m_Layer: 7
   m_Name: NPC_Cactus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,6 +574,56 @@ MonoBehaviour:
   mRotationTransform: {fileID: 2351783458567255654, guid: cbc814ca6b730954b8a5e3641bde01c9, type: 3}
   mRotationSpeed: 400
   mAnimator: {fileID: 7442050115661319743, guid: cbc814ca6b730954b8a5e3641bde01c9, type: 3}
+--- !u!136 &-4569707650510538569
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427070853888570003}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2755631137439024732
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427070853888570003}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7712155012871449178
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +633,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7138104688586967443}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_spine03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -615,7 +667,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1196786125460523384}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_rightEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -646,7 +698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6374870412962233307}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_spine02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,7 +730,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 357232894606288427}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +765,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1010455874766843891}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_rightLowerArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +797,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3116623962574632539}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cactus_leftHandTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}

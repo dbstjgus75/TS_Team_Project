@@ -17,6 +17,15 @@ public class MyPcUnit : UnitBase
         mExp = 0;
         mMaxExp = 10000;
         mLevel = 1;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
 
     }
 
@@ -47,6 +56,7 @@ public class MyPcUnit : UnitBase
     public override void OnDie()
     {
         base.OnDie();
+        FSMStageController.aInstance.ChangeState(new FSMStageStateExit()); // 죽었을 때 상태 변경
     }
 
     void Update()

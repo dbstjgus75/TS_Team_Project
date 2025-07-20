@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class NpcUnit : UnitBase
 {
     public StageUnitData mStageUnitData { get; set;  }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public bool mlsMoveToTarget { get; set; } = false; // JS 8-2
+
     void Start()
     {
         
@@ -19,8 +21,26 @@ public class NpcUnit : UnitBase
     {
         InitUnit(InUnitId, InStageUnitData.Hp, InStageUnitData.Power, InStageUnitData.Armor);
         mStageUnitData = InStageUnitData;
-
+        mlsMoveToTarget = true; // JS 8-2
+        mlsNoneDamage = false; // JS 8-2
         GameDataManager.aInstance.mLiveNpcUnitCount++;
+    }
+    private void OnTriggerEnter(Collider other) // JS 8-2
+    {
+        MyPcUnit IMyPcUnit = other.GetComponent<MyPcUnit>();
+        if (IMyPcUnit != null)
+        {
+            mlsMoveToTarget = false; 
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        MyPcUnit IMyPCUnit = other.GetComponent<MyPcUnit>();
+        if (IMyPCUnit != null)
+        {
+            mlsMoveToTarget = true; 
+        }
     }
 
     public void SetSpeed(float InSpeed)
@@ -33,9 +53,42 @@ public class NpcUnit : UnitBase
         }
     }
 
+    public override void OnHit(int InDamage)
+    {
+        if (FSMStageController.aInstance.IsPlayGame() == false)
+        {
+            return; // 게임이 플레이 중이 아닐 때는 데미지를 받지 않음
+        }
+        if (mlsNoneDamage == true)
+        {
+            return; // 데미지를 받지 않도록 설정된 상태
+        }
+        mlsNoneDamage = true;
+        base.OnHit(InDamage);
+
+        Debug.Log("Npc : " + gameObject.name + "Hp : " + mUnitData.HP);
+        if(mlsAlive)
+        {
+            StartCoroutine(_OnHitting()); // 데미지를 받은 후 일정 시간 동안 다시 데미지를 받지 않도록 설정
+        }
+    }
+
+    private IEnumerator _OnHitting()
+    {
+        yield return new WaitForSeconds(1.0f); 
+        mlsNoneDamage = false; 
+    }
+
     public override void OnDie() // ysh_7-3
     {
         base.OnDie();
+        mlsAlive = false; // NPC가 죽었을 때 생존 상태를 false로 설정
+        gameObject.SetActive(false); // 비활성화 처리
+        GamePoolManager.aInstance.EnqueueNpcPool(this); // 풀로 반환
         GameDataManager.aInstance.mLiveNpcUnitCount = Mathf.Max(0, --GameDataManager.aInstance.mLiveNpcUnitCount);
+
+        StopAllCoroutines(); // 죽었을 때 모든 코루틴 중지
     }
+
+    private bool mlsNoneDamage = false; 
 }

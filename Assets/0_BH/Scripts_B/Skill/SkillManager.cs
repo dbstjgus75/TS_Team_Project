@@ -14,7 +14,7 @@ public class SkillManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CurrentCooltime += Time.time;
+        CurrentCooltime += Time.deltaTime; //JS¼öÁ¤
     }
     private void _OnMouseInput(int InIndex, Vector3 InMousePos)
     {
@@ -29,6 +29,8 @@ public class SkillManager : MonoBehaviour
             NewSkillData.FirePosition = IHit.point;
             NewSkillData.Cooltime = 0.5f;
             NewSkillData.Speed = 10.0f;
+            NewSkillData.ActiveLevel = 2;
+            NewSkillData.Power = 100;
             FireSkill(NewSkillData);
         }
     }
