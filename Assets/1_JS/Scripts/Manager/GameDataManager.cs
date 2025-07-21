@@ -127,7 +127,7 @@ public class GameDataManager
         }
         return SkillDatas[InSkillType];
     }
-    public SkillLevelData FindSkillLevleData(SkillType InSkillType, int InSkillLevel)
+    public SkillLevelData FindSkillLevelData(SkillType InSkillType, int InSkillLevel)
     {
         if (SkillDatas.ContainsKey(InSkillType) == false)
         {
