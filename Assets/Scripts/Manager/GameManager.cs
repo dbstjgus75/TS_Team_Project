@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameDataManager.aInstance.Init();
-        GameDataManager.aInstance.LoadAll(); // ysh update 2:01
         GameDataManager.aInstance.SetStageData(mMyPc, mNpcSpawnParent, mSkillObjectParant, mItemObjectParent);
         GameDataManager.aInstance.SetCurrentStage(mStageId);
+        GameDataManager.aInstance.LoadAll(); // ysh update 2:01
 
         GamePoolManager.aInstance.Init();
 
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         FSMStageController.aInstance.Init();
 
         FSMStageController.aInstance.EnterStage();
+
     }
 
     void OnDestroy()

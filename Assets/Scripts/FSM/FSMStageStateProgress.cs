@@ -3,7 +3,7 @@ using UnityEngine;
 public class FSMStageStateProgress : FSMStateBase
 {
     public FSMStageStateProgress() 
-        : base(EFSMStageStateType.StageStart) 
+        : base(EFSMStageStateType.StageProgress) 
     {
 
     }

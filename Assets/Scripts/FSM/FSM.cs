@@ -13,6 +13,7 @@ public class FSM
     
     public void ChangeState(FSMStateBase InFSMState)
     {
+        Debug.Log("ChangeState mCurreentState1 :" + mCurrentState); // mCurrentState : Enter, InFSMState : Progress
         if (mCurrentState == InFSMState)
         {
             return;
@@ -24,6 +25,8 @@ public class FSM
         }
 
         mCurrentState = InFSMState;
+
+        Debug.Log("ChangeState mCurreentState2 :" + mCurrentState + " " + InFSMState);
         if (mCurrentState != null)
         {
             mCurrentState.OnEnter();

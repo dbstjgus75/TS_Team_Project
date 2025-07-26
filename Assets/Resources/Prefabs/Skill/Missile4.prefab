@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3059247692605875412}
   - component: {fileID: -1449960415671734804}
   m_Layer: 8
-  m_Name: Missile2
+  m_Name: Missile4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -162,7 +162,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee0e392ed8ef11f4689b53550060a43d, type: 2}
+  - {fileID: 2100000, guid: e494ba9ff44349742ade191199326bf7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

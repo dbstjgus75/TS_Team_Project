@@ -47,11 +47,11 @@ public class GameDataManager
         SkillDatas.Clear(); // JS_6-2 
         SkillDatas =null; // JS
 
+        StageDatas.Clear(); // ysh
+        StageDatas = null; // ysh
         SkillResources.Clear(); // JS   
         SkillResources = null; // JS
 
-        StageDatas.Clear(); // ysh
-        StageDatas = null; // ysh
 
         mLiveNpcUnitCount = 0; // ysh_7-3
 
@@ -68,7 +68,7 @@ public class GameDataManager
 
     public void LoadSkillData() // JS
     {
-        SkillDatas = new Dictionary<SkillType, SkillData>();
+        SkillDatas = new Dictionary<SkillType, SkillData>(); 
         SkillResources = new Dictionary<string, SkillBase>();
         SkillDatas.Clear();
         SkillResources.Clear();
@@ -236,7 +236,7 @@ public class GameDataManager
 
     private Dictionary<int, StageData> StageDatas = null; // ysh
     
-    private Dictionary<SkillType, SkillData> SkillDatas = null; // JS
+    private Dictionary<SkillType, SkillData> SkillDatas = null; // JS  
     private Dictionary<string, SkillBase> SkillResources = null; // JS
 
 

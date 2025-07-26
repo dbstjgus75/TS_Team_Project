@@ -24,7 +24,7 @@
 					"Speed" : 15,
 					"ActiveTime" : 0.5,
 					"CoolTime" : 2.5
-				},
+				}
 			]
 		},
 		{
@@ -50,7 +50,7 @@
 					"Speed" : 15,
 					"ActiveTime" : 0.5,
 					"CoolTime" : 0.4
-				},
+				}
 			]
 		},
 		{
@@ -75,7 +75,7 @@
 					"Speed" : 15,
 					"ActiveTime" : 3.5,
 					"CoolTime" : 4
-				},
+				}
 			]
 		},
 		{
@@ -98,7 +98,7 @@
 					"Size" : 1,
 					"Speed" : 15,
 					"CoolTime" : 0.4
-				},
+				}
 			]
 		}
 			

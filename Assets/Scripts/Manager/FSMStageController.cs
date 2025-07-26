@@ -26,13 +26,17 @@ public class FSMStageController
     public void EnterStage()
     {
         mStageFSM = new FSM(new FSMStageStateEnter());
+        Debug.Log("EnterStage 실행  mStageFSM : " + mStageFSM);
     }
 
     public void ChangeState(FSMStateBase InFSMState)
     {
+        Debug.Log("ChangeStage 안" + InFSMState + " " + mStageFSM); // mStageFSM -> FSM 임.
         if (mStageFSM != null)
         {
-            mStageFSM.ChangeState(InFSMState);
+            Debug.Log("mStageFSM != null 들어감");
+            mStageFSM.ChangeState(InFSMState); // InFSMState -> new FSMStageStateProress 를 받음
+            
         }
     }
 
@@ -45,6 +49,8 @@ public class FSMStageController
     }
     public bool IsPlayGame() //BH
     {
+       
+        Debug.Log("IsPlayGame 함수 내부 : " + mStageFSM);
         if (mStageFSM == null)
         {
             return false;

@@ -25,6 +25,15 @@ public class FSMStageStateEnter : FSMStateBase
             
         }
 
+        MyPcUnit MyPc = GameDataManager.aInstance.GetMyPCObject().GetComponent<MyPcUnit>(); // ysh 07/23
+        if(MyPc != null) // ysh 07/23
+        {
+            MyPc.InitUnit(0, 10000, 100, 100);
+            SkillManager MySkillManager = MyPc.GetComponent<SkillManager>();
+            MySkillManager.AddSkillData(SkillType.Missile);
+            MySkillManager.AddSkillData(SkillType.ManualMissile);
+        }
+
         mCountDown = 3; // ysh
         mDurationTime = 0; // ysh
 
@@ -45,7 +54,9 @@ public class FSMStageStateEnter : FSMStateBase
         {
             if (mCountDown <= 0)
             {
+                Debug.Log("mCountDown = 0");
                 FSMStageController.aInstance.ChangeState(new FSMStageStateProgress());
+                Debug.Log("FSM ChangeState 실행 성공");
             }
             else
             {
